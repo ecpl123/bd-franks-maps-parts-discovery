@@ -3,6 +3,7 @@ package com.amazon.ata.maps.partsdiscovery;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
 
 /**
  * Helps expose key words from new editions of part catalogs.
@@ -17,7 +18,28 @@ public class DevicePartDiscovery {
      */
     public Map<String, Integer> calculateWordCounts(PartCatalog catalog) {
         // PARTICIPANTS: Implement calculateWordCounts()
-        return Collections.emptyMap();
+        //instantiate object to be returned (returnedMap)
+        //return the object expected
+        //look through PartCatalog catalogWordList
+        //check to see if the word is already in the return map, if yes add 1 to frequency
+        //add the current word to the returned map with a count of 1 if it's not already in there
+        Map<String, Integer> returnedMap = new HashMap<String, Integer>();
+
+        for(String word: catalog.getCatalogWords()){
+            if(!returnedMap.containsKey(word)){
+                returnedMap.put(word, 1);
+            }
+            else{
+                int frequency = returnedMap.get(word);
+                returnedMap.put(word, frequency + 1);
+            }
+        }
+
+
+
+
+
+        return returnedMap;
     }
 
     // --- Part B ---
